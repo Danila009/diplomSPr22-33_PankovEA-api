@@ -84,7 +84,7 @@ namespace Diploma.Controllers
             {
                 Id = id,
                 State = state,
-                SerialNumber = id + DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                SerialNumber = Convert.ToInt32(id + DateTimeOffset.UtcNow.ToUnixTimeSeconds())
             };
 
             _efModel.Orders.Remove(order);
@@ -182,7 +182,7 @@ namespace Diploma.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("Equipment")]
         public async Task<ActionResult<List<Equipment>>> GetEquipments(string? search)
         {
             IQueryable<Equipment> equipments = _efModel.Equipments;
