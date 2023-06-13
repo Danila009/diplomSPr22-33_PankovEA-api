@@ -84,7 +84,7 @@ namespace Diploma.Controllers
             {
                 Id = id,
                 State = state,
-                SerialNumber = Convert.ToInt32(id + DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+                SerialNumber = id + DateTimeOffset.UtcNow.ToUnixTimeSeconds()
             };
 
             _efModel.Orders.Remove(order);
