@@ -1,4 +1,5 @@
 ﻿using Diploma.Database;
+using Diploma.model.equipment;
 using Diploma.model.order;
 using Diploma.model.provider;
 using Diploma.model.warehouse;
@@ -25,15 +26,15 @@ namespace Diploma.Controllers
         {
             IQueryable<Order> orders = _efModel.Orders
                 .Include(u => u.Provider)
-                    .ThenInclude(u => u.Post);
+                    .ThenInclude(u => u.Post)
+                .Include(u => u.Equipment);
 
            
             if (!string.IsNullOrEmpty(search))
             {
                 var q = search.ToLower().Trim();
 
-                orders = orders.Where(u => u.Description.ToLower().Contains(search)
-                || u.Title.ToLower().Contains(search));
+                orders = orders.Where(u => u.Equipment.Name.ToLower().Contains(search));
             }
 
             var list = await orders.ToListAsync();
@@ -51,14 +52,14 @@ namespace Diploma.Controllers
         {
             IQueryable<WarehouseOrder> orders = _efModel.WarehouseOrders
                 .Include(u => u.Provider)
-                    .ThenInclude(u => u.Post);
+                    .ThenInclude(u => u.Post)
+                .Include(u => u.Equipment);
 
             if (!string.IsNullOrEmpty(search))
             {
                 var q = search.ToLower().Trim();
 
-                orders = orders.Where(u => u.Description.ToLower().Contains(search)
-                || u.Title.ToLower().Contains(search));
+                orders = orders.Where(u => u.Equipment.Name.ToLower().Contains(search));
             }
 
             if(state != null)
@@ -82,9 +83,7 @@ namespace Diploma.Controllers
             var orderWarehouse = new WarehouseOrder
             {
                 Id = id,
-                State = state,
-                Title = order.Title,
-                Description = order.Description
+                State = state
             };
 
             _efModel.Orders.Remove(order);
@@ -120,10 +119,15 @@ namespace Diploma.Controllers
             if(provider == null)
                 return NotFound();
 
+            var equipment = await _efModel.Equipments.FindAsync(dto.EquipmentId);
+
+            if (equipment == null)
+                return NotFound();
+
             var order = new Order
             {
-                Title = dto.Title,
-                Description = dto.Description,
+                Equipment = equipment,
+                EquipmentCount = dto.EquipmentCount,
                 Provider = provider
             };
 
@@ -147,8 +151,13 @@ namespace Diploma.Controllers
             if (provider == null)
                 return NotFound();
 
-            order.Title = dto.Title;
-            order.Description = dto.Description;
+            var equipment = await _efModel.Equipments.FindAsync(dto.EquipmentId);
+
+            if (equipment == null)
+                return NotFound();
+
+            order.EquipmentCount = dto.EquipmentCount;
+            order.Equipment = equipment;
             order.Provider = provider;
 
             _efModel.Entry(provider).State = EntityState.Modified;

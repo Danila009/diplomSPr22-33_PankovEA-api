@@ -1,4 +1,5 @@
-﻿using Diploma.model.order;
+﻿using Diploma.model.equipment;
+using Diploma.model.order;
 using Diploma.model.provider;
 using Diploma.model.user;
 using Diploma.model.warehouse;
@@ -24,4 +25,5 @@ public class EfModel:DbContext
     public virtual DbSet<WarehouseOrder> WarehouseOrders { get; set; }
     public virtual DbSet<Provider> Providers { get; set; }
     public virtual DbSet<ProviderPost> ProviderPosts { get; set; }
+    public virtual DbSet<Equipment> Equipments { get; set; }
 }
