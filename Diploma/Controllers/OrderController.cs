@@ -78,7 +78,7 @@ namespace Diploma.Controllers
             var order = await _efModel.Orders
                 .Include(u => u.Provider)
                     .ThenInclude(u => u.Post)
-                .Include(u => u.Warehouse)
+                .Include(u => u.Equipment)
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             if (order == null)
