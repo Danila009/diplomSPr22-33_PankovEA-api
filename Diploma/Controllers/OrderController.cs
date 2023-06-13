@@ -75,7 +75,11 @@ namespace Diploma.Controllers
         [HttpPost("{id}/Warehouse")]
         public async Task<ActionResult> CreateOrderWarehouse(int id, WarehouseState state)
         {
-            var order = await _efModel.Orders.FindAsync(id);
+            var order = await _efModel.Orders
+                .Include(u => u.Provider)
+                    .ThenInclude(u => u.Post)
+                .Include(u => u.Warehouse)
+                .FirstOrDefaultAsync(u => u.Id == id);
 
             if (order == null)
                 return NotFound();
@@ -84,7 +88,9 @@ namespace Diploma.Controllers
             {
                 Id = id,
                 State = state,
-                SerialNumber = id + DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+                SerialNumber = id + DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+                Provider = order.Provider,
+                Equipment = order.Equipment,
             };
 
             _efModel.Orders.Remove(order);
