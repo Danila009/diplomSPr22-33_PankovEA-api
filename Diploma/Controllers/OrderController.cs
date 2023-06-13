@@ -83,7 +83,8 @@ namespace Diploma.Controllers
             var orderWarehouse = new WarehouseOrder
             {
                 Id = id,
-                State = state
+                State = state,
+                SerialNumber = id + DateTimeOffset.UtcNow.ToUnixTimeSeconds()
             };
 
             _efModel.Orders.Remove(order);

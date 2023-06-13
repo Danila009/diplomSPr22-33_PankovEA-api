@@ -297,3 +297,13 @@ C:\Users\danbe\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\scop
 C:\Users\danbe\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.csproj.CopyComplete
 C:\Users\danbe\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.genruntimeconfig.cache
 C:\Users\danbe\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\ref\Diploma.dll
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.csproj.AssemblyReference.cache
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.AssemblyInfoInputs.cache
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.AssemblyInfo.cs
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.csproj.CoreCompileInputs.cache
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.dll
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\refint\Diploma.dll
+C:\Users\DanBel\Desktop\diplomSPr22-33_PankovEA-api\Diploma\obj\Debug\net6.0\Diploma.pdb

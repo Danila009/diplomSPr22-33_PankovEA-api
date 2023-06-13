@@ -7,6 +7,7 @@ namespace Diploma.model.warehouse
     public class WarehouseOrder : Order
     {
         public WarehouseState State { get; set; }
+        public long SerialNumber { get; set; } 
         public override bool Warehouse => true;
     }
 
