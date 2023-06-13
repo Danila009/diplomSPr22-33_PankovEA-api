@@ -29,7 +29,7 @@ namespace Diploma.Controllers
                     .ThenInclude(u => u.Post)
                 .Include(u => u.Equipment);
 
-           
+
             if (!string.IsNullOrEmpty(search))
             {
                 var q = search.ToLower().Trim();
@@ -62,7 +62,7 @@ namespace Diploma.Controllers
                 orders = orders.Where(u => u.Equipment.Name.ToLower().Contains(search));
             }
 
-            if(state != null)
+            if (state != null)
             {
                 orders = orders.Where(u => u.State == state);
             }
@@ -117,7 +117,7 @@ namespace Diploma.Controllers
         {
             var provider = await _efModel.Providers.FindAsync(dto.ProviderId);
 
-            if(provider == null)
+            if (provider == null)
                 return NotFound();
 
             var equipment = await _efModel.Equipments.FindAsync(dto.EquipmentId);
@@ -180,6 +180,19 @@ namespace Diploma.Controllers
             await _efModel.SaveChangesAsync();
 
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<Equipment>>> GetEquipments(string? search)
+        {
+            IQueryable<Equipment> equipments = _efModel.Equipments;
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                equipments = equipments.Where(u => u.Name.ToLower().Contains(search.ToLower().Trim()));
+            }
+
+            return await equipments.ToListAsync();
         }
     }
 }
